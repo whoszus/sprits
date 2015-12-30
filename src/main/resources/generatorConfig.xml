@@ -49,7 +49,7 @@
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="cc.top.model.dao" targetProject="src/main/java" type="MIXEDMAPPER">
+        <javaClientGenerator targetPackage="cc.top.model.mapper" targetProject="src/main/java" type="MIXEDMAPPER">
             <property name="enableSubPackages" value=""/>
             <!--
                     定义Maper.java 源代码中的ByExample() 方法的可视性，可选的值有：

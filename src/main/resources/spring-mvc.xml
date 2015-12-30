@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 ">
 	<!--扫描自动依赖注入的包名 -->
-	<context:component-scan base-package="cc.top.contorller"/>
+	<context:component-scan base-package="cc.top.controller"/>
 	<!-- 默认的注解映射的支持 -->
 	<mvc:annotation-driven/>
 	<!--视图解释器 -->

@@ -17,7 +17,7 @@
        </settings>
 
        <typeAliases>
-              <typeAlias alias="User" type="cc.top.model.entity" />
+              <typeAlias alias="User" type="cc.top.model.entity.User" />
        </typeAliases>
 
 </configuration>

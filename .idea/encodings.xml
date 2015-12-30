@@ -2,5 +2,10 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/Java/cc/top/fundation/base/BaseDao.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Java/cc/top/fundation/base/impl/BaseDaoImpl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Java/cc/top/fundation/utils/PageIndex.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Java/cc/top/fundation/utils/PageView.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Java/cc/top/fundation/utils/WebTool.java" charset="GBK" />
   </component>
 </project>
