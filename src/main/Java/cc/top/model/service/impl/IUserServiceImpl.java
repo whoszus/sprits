@@ -8,16 +8,18 @@ import cc.top.model.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * Created by linyanying on 2015/12/30.
  */
 @Service("userService")
 public class IUserServiceImpl implements IUserService{
 
-    @Autowired
-    private IUserDao userDao;
+    @Resource
+    private UserMapper userMapper;
 
     public User getUser(User user) {
-        return userDao.getUser(user);
+        return null;
     }
 }

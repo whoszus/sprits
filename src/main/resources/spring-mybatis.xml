@@ -53,11 +53,11 @@
 		<property name="typeAliasesPackage" value="cc.top.model.entity"/>
 		<!-- 配置mybatis配置文件的位置 -->
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
-		<property name="mapperLocations">
-			<array>
-				<value>classpath:mapper/*.xml</value>
-			</array>
-		</property>
+		<!--<property name="mapperLocations">-->
+			<!--<array>-->
+				<!--<value>classpath:mapper/*.xml</value>-->
+			<!--</array>-->
+		<!--</property>-->
 	</bean>
 
 	<!-- 配置扫描Mapper接口的包路径 -->
