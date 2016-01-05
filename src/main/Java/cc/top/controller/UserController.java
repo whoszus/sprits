@@ -4,6 +4,7 @@ import cc.top.model.entity.User;
 import cc.top.model.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
@@ -27,11 +28,17 @@ public class UserController {
         return map;
     }
 
-    @RequestMapping("hell")
+    @RequestMapping("getUser/{id}")
     @ResponseBody
-    public void user(User user){
-        userService.getUser(user);
+    public void getUser(User user, @PathVariable("id") String id){
+
+        User user1 = userService.getUser(user);
+        System.out.println("ffffffff" + user1.getUserName());
+        System.out.println("ffffffff" + user1.getPassword());
+
     }
+
+
 
 
 }
