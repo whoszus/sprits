@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd09649e-60c2-4977-bbad-8ffca5423d83" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/workLog/spring/AOP.md" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/workLog/AOP" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/htnl/hotpot.html" afterPath="$PROJECT_DIR$/src/main/webapp/htnl/hotpot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/workLog/spring/AOP.md" afterPath="$PROJECT_DIR$/workLog/spring/AOP.md" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,8 +52,8 @@
       <file leaf-file-name="AOP.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/workLog/spring/AOP.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61849713">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6242775">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -842,7 +841,7 @@
       <workItem from="1457683483981" duration="232000" />
       <workItem from="1457683927733" duration="495000" />
       <workItem from="1458184092811" duration="2081000" />
-      <workItem from="1458290766386" duration="9979000" />
+      <workItem from="1458290766386" duration="11766000" />
     </task>
     <task id="LOCAL-00001" summary="test user">
       <created>1451487251818</created>
@@ -898,11 +897,17 @@
       <option name="project" value="LOCAL" />
       <updated>1458368936966</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="1.提交代码&#10;2.提交AOP文件">
+      <created>1458393820418</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1458393820418</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40809000" />
+    <option name="totallyTimeSpent" value="42596000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="44" y="137" width="1640" height="946" extended-state="0" />
@@ -1312,8 +1317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/workLog/spring/AOP.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61849713">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6242775">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
           <folding />
         </state>
       </provider>
