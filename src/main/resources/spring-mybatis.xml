@@ -59,7 +59,7 @@
 		<property name="mapperLocations">
 			<list>
 			<!-- 自动匹配Mapper映射文件  -->
-			<value>classpath:cc/top/model/*/entity/*-mapper.xml</value>
+			<value>classpath:/mapper/*-mapper.xml</value>
 			</list>
 		</property>
 

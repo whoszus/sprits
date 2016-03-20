@@ -69,4 +69,7 @@ org.mybatis.spring.mapper.MapperScannerConfigurer$Scanner.main No MyBatis mapper
 org.mybatis.spring.mapper.MapperScannerConfigurer是扫描仓储类的接口，我不是用接口方式实现管理的．所把那段删除便可！
 
 
-##3.
+##3.mapper.xml文件在打包的时候不进入target中;
+    把mapper.xml文件放到resources文件中;
+
+

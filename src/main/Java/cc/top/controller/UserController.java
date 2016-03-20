@@ -30,12 +30,12 @@ public class UserController {
 
     @RequestMapping("getUser")
     @ResponseBody
-    public void getUser(User user){
+    public User getUser(User user){
 
-        User user1 = userService.getUserbyId(user.getId());
+        User user1 = userService.getUser(user);
         System.out.println("ffffffff" + user1.getUserName());
         System.out.println("ffffffff" + user1.getPassword());
-
+        return user1;
     }
 
 
