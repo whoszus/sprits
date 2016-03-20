@@ -1,12 +1,12 @@
 package cc.top.controller;
 
-import cc.top.model.entity.User;
-import cc.top.model.service.IUserService;
+import cc.top.model.TestModel.entity.User;
+import cc.top.model.TestModel.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,11 +28,11 @@ public class UserController {
         return map;
     }
 
-    @RequestMapping("getUser/{id}")
+    @RequestMapping("getUser")
     @ResponseBody
-    public void getUser(User user, @PathVariable("id") String id){
+    public void getUser(User user){
 
-        User user1 = userService.getUser(user);
+        User user1 = userService.getUserbyId(user.getId());
         System.out.println("ffffffff" + user1.getUserName());
         System.out.println("ffffffff" + user1.getPassword());
 

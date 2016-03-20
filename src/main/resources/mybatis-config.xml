@@ -14,10 +14,16 @@
               <setting name="mapUnderscoreToCamelCase" value="true"/>
               <!-- 是否使用插入数据后自增主键的值，需要配合keyProperty使用 -->
               <setting name="useGeneratedKeys" value="true"/>
+              <!--开启输出语句以及记录-->
+              <setting name="logImpl" value="LOG4J" />
+
        </settings>
 
        <typeAliases>
-              <typeAlias alias="User" type="cc.top.model.entity.User" />
+              <typeAlias alias="User" type="cc.top.model.TestModel.entity.User" />
        </typeAliases>
+
+
+
 
 </configuration>

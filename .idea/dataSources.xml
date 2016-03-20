@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3080631315">
-    <data-source source="LOCAL" name="MySQL - sprits@localhost" uuid="efcfe1ef-5726-49e4-b2d0-af929ca75ccb">
+  <component name="DataSourceManagerImpl" format="xml" hash="1028891589">
+    <data-source source="LOCAL" name="MySQL - sprits@localhost" uuid="aaf00d5f-3d54-4ccb-a51b-5943ed999472">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/sprits</jdbc-url>
       <driver-properties>
+        <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
         <property name="characterEncoding" value="utf8" />

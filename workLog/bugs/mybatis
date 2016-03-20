@@ -1,0 +1,72 @@
+
+##1.  IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+
+
+当时采用的是传统的继承 SqlSessionDaoSupport 的方式构建 baseDao，然后构建各个功能dao来继承这个baseDao，可以直接使用SqlSessionDaoSupport中继承来的 getSqlSession()方法来获取sqlSession，用来执行sql，原本都没有问题，但是这次我用maven添加依赖时候，选择的是最新版本的 mybatis-spring-1.2.4.jar， 啊哦，坑来了。
+
+注意看1.2.0中的SqlSessionDaoSupport所对应的javadoc的注释：
+/**
+ * Convenient super class for MyBatis SqlSession data access objects.
+ * It gives you access to the template which can then be used to execute SQL methods.
+ * <p>
+ * This class needs a SqlSessionTemplate or a SqlSessionFactory.
+ * If both are set the SqlSessionFactory will be ignored.
+ * <p>
+ * {code Autowired} was removed from setSqlSessionTemplate and setSqlSessionFactory
+ * in version 1.2.0.
+ *
+ * @see #setSqlSessionFactory
+ * @see #setSqlSessionTemplate
+ * @see SqlSessionTemplate
+ * @version $Id$
+ */
+
+注意到 {code Autowired} was removed from setSqlSessionTemplate and setSqlSessionFactory 这句话，坑爹啊，也就是说当你使用1.2.0的jar包时候，mybatis-spring的这个基类不会再直接将spring配置文件中配好的 sqlSessionFactory 或者 sqlSessionTemplate注入到这个基类中，而在使用时候，SqlSessionDaoSupport的方法
+
+protected void checkDaoConfig() {
+    notNull(this.sqlSession, "Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required");
+  }
+
+就会抛出对应的异常了
+
+解决方案:
+
+
+配置文件跟我 贴出来的配置文件一样，不需要做改动，只需要在baseDao中注入sqlSessionFactory 或者 sqlSessionTemplate即可，代码如下：
+
+BaseDao.java
+
+
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public abstract class BaseDao<T> extends SqlSessionDaoSupport {
+
+    @Autowired
+    public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
+        super.setSqlSessionTemplate(sqlSessionTemplate);
+    }
+
+    protected <S> S getMapper(Class<S> clazz) {
+        return getSqlSession().getMapper(clazz);
+    }
+}
+
+## 2. No MyBatis mapper was found
+
+在集成Spring + mybaits时出现以下警告
+org.mybatis.spring.mapper.MapperScannerConfigurer$Scanner.main No MyBatis mapper was found in 'com.＊＊＊.dao.impl' package. Please check your configuration.
+
+出现以上情况是因为你的配置文件写多了这一段，
+<!-- 配置扫描Mapper接口的包路径 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cc.top.model.*.entity"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+原因：是
+org.mybatis.spring.mapper.MapperScannerConfigurer是扫描仓储类的接口，我不是用接口方式实现管理的．所把那段删除便可！
+
+
+##3.

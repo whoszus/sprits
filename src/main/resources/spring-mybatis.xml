@@ -27,7 +27,6 @@
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
 	<!-- 配置数据源，从上面配置文件读取-->
-	<!-- 数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
@@ -49,22 +48,30 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<!-- 配置扫描Domain的包路径 -->
-		<property name="typeAliasesPackage" value="cc.top.model.entity"/>
 		<!-- 配置mybatis配置文件的位置 -->
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
 		<!--<property name="mapperLocations">-->
 			<!--<array>-->
-				<!--<value>classpath:mapper/*.xml</value>-->
+				<!--<value>classpath:cc/top/model/*/entity/*-mapper.xml</value>-->
 			<!--</array>-->
 		<!--</property>-->
+
+		<property name="mapperLocations">
+			<list>
+			<!-- 自动匹配Mapper映射文件  -->
+			<value>classpath:cc/top/model/*/entity/*-mapper.xml</value>
+			</list>
+		</property>
+
+
+
 	</bean>
 
-	<!-- 配置扫描Mapper接口的包路径 -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="cc.top.model.mapper"/>
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-	</bean>
+	<!--&lt;!&ndash; 配置扫描Mapper接口的包路径 &ndash;&gt;-->
+	<!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+		<!--<property name="basePackage" value="cc.top.model.*.entity"/>-->
+		<!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+	<!--</bean>-->
 
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
@@ -94,7 +101,7 @@
 
 	<aop:config>
 		<aop:pointcut id="txPointcut"
-					  expression="execution(public * cc.top.model.service.*.*(..))"/>
+					  expression="execution(* cc.top.model.*.service.*.*(..))"/>
 		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
 	</aop:config>
 </beans>
