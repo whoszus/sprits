@@ -27,14 +27,10 @@ public class UserController {
         map.put("hello","world");
         return map;
     }
-
     @RequestMapping("getUser")
     @ResponseBody
     public User getUser(User user){
-
         User user1 = userService.getUser(user);
-        System.out.println("ffffffff" + user1.getUserName());
-        System.out.println("ffffffff" + user1.getPassword());
         return user1;
     }
 
