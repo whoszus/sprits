@@ -10,35 +10,137 @@
       <schema id="1" name="sprits"/>
       <table id="2" parent="1" name="t_user"/>
       <table id="3" parent="1" name="user"/>
-      <column id="4" parent="2" name="id">
+      <table id="4" parent="1" name="webchat"/>
+      <table id="5" parent="1" name="webchatclient"/>
+      <column id="6" parent="2" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="5" parent="2" name="name">
+      <column id="7" parent="2" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(10)</data-type>
       </column>
-      <column id="6" parent="2" name="password">
+      <column id="8" parent="2" name="password">
         <mandatory>1</mandatory>
         <data-type>varchar(30)</data-type>
       </column>
-      <key id="7" parent="2" name="PRIMARY">
+      <key id="9" parent="2" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="8" parent="3" name="id">
+      <column id="10" parent="3" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="9" parent="3" name="user_name">
+      <column id="11" parent="3" name="user_name">
         <mandatory>1</mandatory>
         <data-type>varchar(40)</data-type>
       </column>
-      <column id="10" parent="3" name="password">
+      <column id="12" parent="3" name="password">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <key id="11" parent="3" name="PRIMARY">
+      <key id="13" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="14" parent="4" name="webchatid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="15" parent="4" name="appid">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="16" parent="4" name="secret">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="17" parent="4" name="webchatopen">
+        <data-type>varchar(8)</data-type>
+      </column>
+      <key id="18" parent="4" name="PRIMARY">
+        <columns>webchatid</columns>
+        <primary>1</primary>
+      </key>
+      <column id="19" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="20" parent="5" name="openid">
+        <comment>用户的标识，对当前公众号唯一
+</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="21" parent="5" name="subscribe">
+        <comment>用户是否订阅该公众号标识，值为0时，代表此用户没有关注该公众号，拉取不到其余信息。</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="22" parent="5" name="nickname">
+        <comment>用户的昵称</comment>
+        <data-type>varchar(18)</data-type>
+      </column>
+      <column id="23" parent="5" name="sex">
+        <comment>用户的性别，值为1时是男性，值为2时是女性，值为0时是未知</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="24" parent="5" name="city">
+        <comment>用户所在城市</comment>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="25" parent="5" name="country">
+        <comment>用户所在国家</comment>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="26" parent="5" name="province">
+        <comment>省份</comment>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="27" parent="5" name="headimgurl">
+        <comment>用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。</comment>
+        <data-type>varchar(256)</data-type>
+      </column>
+      <column id="28" parent="5" name="unionid">
+        <comment>只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段</comment>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="29" parent="5" name="remark">
+        <comment>公众号运营者对粉丝的备注，公众号运营者可在微信公众平台用户管理界面对粉丝添加备注
+</comment>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="30" parent="5" name="groupid">
+        <comment>用户所在的分组ID
+</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="31" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+  <data-source name="MySQL - sprits@42.96.131.73" uuid="a401627e-f9fb-454d-a9da-5f0167e38b64">
+    <database-info product="MySQL" version="5.1.73" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="sprits"/>
+      <table id="2" parent="1" name="user"/>
+      <column id="3" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="4" parent="2" name="user_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)</data-type>
+      </column>
+      <column id="5" parent="2" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="6" parent="2" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

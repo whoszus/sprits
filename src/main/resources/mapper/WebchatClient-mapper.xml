@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="webchatclient">
+    <sql id="selectId">
+        id,openid,subscribe,nickname,sex,city,country,province,headimgurl,unionid,remark,groupid
+    </sql>
+    <insert id="addClient" parameterType="WebchatClient">
+        insert into webchatclient(openid,subscribe,nickname,sex,city,country,province,headimgurl,remark,groupid)
+        values(#{openid}, #{subscribe}, #{nickname}, #{sex}, #{city}, #{country}, #{province}, #{headimgurl}, #{remark},#{groupid})
+    </insert>
+
+
+    <select id="selectAll" resultType="WebChatClient">
+        SELECT
+        <include refid="selectId" />
+        from webchatclient
+    </select>
+</mapper>

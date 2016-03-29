@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="webchat">
+    <sql id="selectId">
+        webchatid,appid,secret,webchatopen
+    </sql>
+    <insert id="add" parameterType="WebChat">
+        insert into webchat(webchatid,appid, secret,webchatopen)
+        values(#{webchatid}, #{appid},#{secret},#{webchatopen})
+    </insert>
+
+    <select id="selectbyopen" resultType="WebChat" parameterType="String">
+        SELECT
+        <include refid="selectId" />
+        from webchat
+        <where>
+            webchatopen=#{webchatopen}
+        </where>
+    </select>
+    <select id="getall" resultType="WebChat">
+        SELECT
+        <include refid="selectId" />
+        FROM webchat
+    </select>
+</mapper>
