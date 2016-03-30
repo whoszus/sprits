@@ -21,6 +21,8 @@
 
        <typeAliases>
               <typeAlias alias="User" type="cc.top.model.TestModel.entity.User" />
+              <typeAlias alias="WebChat" type="cc.top.model.webchat.entity.WebChat" />
+              <typeAlias alias="WebchatClient" type="cc.top.model.webchat.entity.WebchatClient" />
        </typeAliases>
 
 
