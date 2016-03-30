@@ -1,6 +1,6 @@
 package cc.top.model.TestModel.dao.impl;
 
-import cc.top.fundation.impl.BaseDaoImpl;
+import cc.top.fundation.BASEDAO.BaseDaoImpl;
 import cc.top.model.TestModel.dao.UserDao;
 import cc.top.model.TestModel.entity.User;
 import org.springframework.stereotype.Repository;

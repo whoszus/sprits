@@ -1,6 +1,6 @@
 package cc.top.model.webchat.dao.impl;
 
-import cc.top.fundation.impl.BaseDaoImpl;
+import cc.top.fundation.BASEDAO.BaseDaoImpl;
 import cc.top.model.webchat.dao.IWebchatDao;
 import cc.top.model.webchat.entity.WebChat;
 import org.springframework.stereotype.Repository;

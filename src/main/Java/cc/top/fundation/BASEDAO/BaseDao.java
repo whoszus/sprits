@@ -1,4 +1,4 @@
-package cc.top.fundation;
+package cc.top.fundation.BASEDAO;
 
 import java.util.List;
 
