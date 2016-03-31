@@ -18,6 +18,8 @@ public class WebchatClient implements Serializable{
     private int groupid;
     private int sex;    //用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
     private int subscribe; //用户是否订阅该公众号标识，值为0时，代表此用户没有关注该公众号，拉取不到其余信息。
+    private String language;
+    private String subscribe_time;
 
     public int getId() {
         return id;
@@ -113,5 +115,21 @@ public class WebchatClient implements Serializable{
 
     public void setSubscribe(int subscribe) {
         this.subscribe = subscribe;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getSubscribe_time() {
+        return subscribe_time;
+    }
+
+    public void setSubscribe_time(String subscribe_time) {
+        this.subscribe_time = subscribe_time;
     }
 }

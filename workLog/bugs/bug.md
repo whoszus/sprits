@@ -22,3 +22,5 @@
       *jackson 问题?
       * stackoverflow 上 :   1) You didn't specify the application/json in your Accept header 2) You need to specify produces="application/json" in your @RequestMapping
 
+    6.连不上阿里云 ssh : connect reset by peer
+        a. 配置白名单解决;

@@ -15,7 +15,7 @@
     <select id="selectById" resultType="User" parameterType="String">
         SELECT
         <include refid="selectId" />
-        from User
+        from user
         <where>
             id=#{id}
         </where>
