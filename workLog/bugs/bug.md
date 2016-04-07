@@ -24,3 +24,8 @@
 
     6.连不上阿里云 ssh : connect reset by peer
         a. 配置白名单解决;
+
+    7.disparcherServlet 拦截*.html  的时候 出现406 "The resource identified by this request is only capable of generating responses with characteristics not acceptable according to the request "accept" headers.
+
+"
+

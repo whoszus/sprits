@@ -1,0 +1,5 @@
+7.disparcherServlet 拦截*.html  的时候 出现406 "The resource identified by this request is only capable of generating responses with characteristics not acceptable according to the request "accept" headers.
+
+    a.尝试在@RequestMapping(value="getUser",produces="application/json") 无效果;
+
+    b.    @RequestMapping(value="getUser",method = RequestMethod.GET,headers = {"Accept=text/xml, application/json"}) 无效;

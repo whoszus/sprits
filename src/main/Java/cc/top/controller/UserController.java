@@ -4,6 +4,7 @@ import cc.top.fundation.WeixinTools;
 import cc.top.model.TestModel.entity.User;
 import cc.top.model.TestModel.service.IUserService;
 import cc.top.model.webchat.entity.WebchatClient;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,11 +34,22 @@ public class UserController {
         map.put("hello","world");
         return map;
     }
+//    @RequestMapping(value="getUser",produces="application/json")
+//    @RequestMapping(value="getUser",method = RequestMethod.GET,headers = {"Accept=text/xml, application/json"})
     @RequestMapping("getUser")
-    @ResponseBody
-    public User getUser(User user){
+    public void getUser(User user,HttpServletRequest req,HttpServletResponse res ){
+        res.setContentType("text/html;charset=UTF-8");
+        String callbackFunName =req.getParameter("callback");
         User user1 = userService.getUser(user);
-        return user1;
+        Gson gson = new Gson();
+        String json = gson.toJson(user1);
+
+        try {
+            res.getWriter().write(callbackFunName+"("+json+")");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

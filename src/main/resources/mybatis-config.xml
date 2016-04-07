@@ -20,9 +20,16 @@
        </settings>
 
        <typeAliases>
+              <!--测试用户-->
               <typeAlias alias="User" type="cc.top.model.TestModel.entity.User" />
+
+              <!--微信-->
               <typeAlias alias="WebChat" type="cc.top.model.webchat.entity.WebChat" />
               <typeAlias alias="WebchatClient" type="cc.top.model.webchat.entity.WebchatClient" />
+
+              <!--实验室-->
+              <typeAlias alias="Iot" type="cc.top.model.iot.entity.Iot" />
+
        </typeAliases>
 
 

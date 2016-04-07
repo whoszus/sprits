@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="iot">
+
+    <insert id="insertiot" parameterType="Iot">
+        insert into iotnew(name,cls,tel,clsnum,email,detail)
+        values(#{name}, #{cls}, #{tel}, #{clsnum}, #{email}, #{detail})
+    </insert>
+
+
+</mapper>
