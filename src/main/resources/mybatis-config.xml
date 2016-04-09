@@ -30,6 +30,12 @@
               <!--实验室-->
               <typeAlias alias="Iot" type="cc.top.model.iot.entity.Iot" />
 
+              <!--投票系统-->
+
+
+              <typeAlias alias="Vote" type="cc.top.model.ATC.entity.Vote" />
+
+
        </typeAliases>
 
 

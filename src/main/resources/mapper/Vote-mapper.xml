@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vote">
+    <sql id="selectId">
+        id,mechine,count,rate,date
+    </sql>
+
+    <select id="getMechine" resultType="Vote" parameterType="Vote">
+        SELECT
+        <include refid="selectId" />
+        from vote
+        <where>
+            mechine=#{mechine}
+        </where>
+    </select>
+
+    <update id="updateVote" parameterType="Vote"  flushCache="true" statementType="PREPARED" timeout="20">
+        UPDATE vote
+        SET
+          count = #{count},
+          date= #{date},
+          rate = #{rate}
+        WHERE id = #{id}
+    </update>
+
+</mapper>
