@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="625513017">
-    <data-source source="LOCAL" name="MySQL - sprits@localhost" uuid="48ddd640-8f93-4251-b758-ab06c2482398">
+  <component name="DataSourceManagerImpl" format="xml" hash="2029208161">
+    <data-source source="LOCAL" name="MySQL - sprits@42.96.131.73" uuid="a401627e-f9fb-454d-a9da-5f0167e38b64">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/sprits</jdbc-url>
+      <jdbc-url>jdbc:mysql://42.96.131.73:3306/sprits</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
@@ -15,11 +15,11 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="MySQL - sprits@42.96.131.73" uuid="a401627e-f9fb-454d-a9da-5f0167e38b64">
+    <data-source source="LOCAL" name="MySQL - sprits@192.168.31.197" uuid="e1f1d7b0-4c2f-4a0a-8022-c7a92b7e8411">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://42.96.131.73:3306/sprits</jdbc-url>
+      <jdbc-url>jdbc:mysql://192.168.31.197:3306/sprits</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

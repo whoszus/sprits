@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="voteList">
+    <sql id="Base_Column_List">
+        voteId,startTime,endTime,voteName
+    </sql>
+    
+     <select id="getAll" resultType="VoteList">
+         SELECT
+         <include refid="Base_Column_List" />
+         from voteList
+     </select>
+
+    <select id="selectById" parameterType="int" resultType="VoteList">
+        SELECT
+        <include refid="Base_Column_List" />
+        from voteList
+        <where>
+            voteId=#{voteId}
+        </where>
+    </select>
+
+    <insert id="creatVote" parameterType="VoteList">
+        INSERT INTO voteList(startTime,endTime,voteName)
+        VALUES (#{startTime},#{endTime},#{voteName})
+    </insert>
+
+</mapper>

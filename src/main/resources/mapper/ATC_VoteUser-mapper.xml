@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="voteUser">
+    <sql id="Base_Column_List">
+        id,account,password,clsnum,tel,role
+    </sql>
+    <select id="login" parameterType="VoteUser" resultType="VoteUser">
+      SELECT
+          id, account,password,role
+      FROM voteuser
+      WHERE
+          account =#{account} and password=#{password}
+    </select>
+
+    <select id="selectbyAP" parameterType="VoteUser" resultType="VoteUser">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM voteuser
+        WHERE
+        account =#{account} and password=#{password}
+    </select>
+
+    <insert id="regist" parameterType="VoteUser">
+        INSERT into voteuser
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            account,password,
+            <if test="clsnum != null">
+                clsnum,
+            </if>
+            <if test="tel != null">
+                tel
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+             #{account},#{password},
+            <if test="clsnum  != null">
+                #{clsnum},
+            </if>
+            <if test="tel!= null">
+                #{tel}
+            </if>
+        </trim>
+    </insert>
+</mapper>

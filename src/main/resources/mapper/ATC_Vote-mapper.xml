@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vote">
+    <sql id="Base_Column_List">
+        id,voteId,result,userId,date
+    </sql>
+
+    <insert id="addVote" parameterType="Vote">
+        INSERT into vote
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            voteId,result,userId,
+            <if test="date!= null">
+                date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{voteId},#{result},#{userId},
+            <if test="date!= null">
+                #{date},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectByUIdAndVId" resultType="Vote" parameterType="Vote">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM vote
+        <where>
+            voteId=#{voteId} AND userId=#{userId}
+        </where>
+    </select>
+
+
+</mapper>

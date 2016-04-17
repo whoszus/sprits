@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="result">
+    <sql id="Base_Column_List">
+        id,mechineId,rate,count,voteId,voteName
+    </sql>
+
+    <insert id="saveResult" parameterType="Result">
+        INSERT INTO result
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,mechineId,
+            <if test="rate!= 0">
+                rate,
+            </if>
+            <if test="count!= 0">
+               count,
+            </if>
+            voteId,voteName,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id},#{mechineId},
+            <if test="rate!= 0">
+                #{rate},
+            </if>
+            <if test="count!= 0">
+                #{count},
+            </if>
+            #{voteId},#{voteName},
+        </trim>
+    </insert>
+
+    <update id="updateReslut" parameterType="Result">
+        UPDATE  result
+        <set>
+            rate=#{rate},count=#{count}
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+    <select id="selectByVIdAndMId" parameterType="Result"  resultType="Result">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM result
+        <where>
+            mechineId=#{mechineId} AND
+            voteId=#{voteId}
+        </where>
+    </select>
+
+    <select id="getResult" parameterType="int" resultType="Result">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM result
+        <where>
+            voteId=#{voteId}
+        </where>
+    </select>
+
+</mapper>

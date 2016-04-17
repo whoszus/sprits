@@ -1,5 +1,6 @@
 package cc.top.fundation.BASEDAO;
 
+import cc.top.fundation.BaseDao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Created by Zus on 3/21/16.
  */
-public class BaseDaoImpl<T> extends SqlSessionDaoSupport implements BaseDao<T>{
+public class BaseDaoImpl<T> extends SqlSessionDaoSupport implements BaseDao<T> {
 
 
     @Autowired

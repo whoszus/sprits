@@ -5,8 +5,8 @@ import cc.top.model.ATC.entity.Vote;
 /**
  * Created by Zus on 4/9/16.
  */
-public interface VoteDao {
+public interface IVoteDao {
 
-    public Vote getMechine(Vote vote);
-    public void updateVote(Vote vote);
+    public void addVote(Vote v);
+    public Vote selectByUIdAndVId(Vote v);
 }

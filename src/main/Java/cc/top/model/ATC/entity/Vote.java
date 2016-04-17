@@ -7,11 +7,10 @@ import java.util.Date;
  */
 public class Vote {
     private int id;
-    private String  mechine;
-    private int count;
+    private int voteId;
+    private String result;
+    private int userId;
     private Date date;
-    private Double rate;
-
 
     public int getId() {
         return id;
@@ -21,20 +20,28 @@ public class Vote {
         this.id = id;
     }
 
-    public String getMechine() {
-        return mechine;
+    public int getVoteId() {
+        return voteId;
     }
 
-    public void setMechine(String mechine) {
-        this.mechine = mechine;
+    public void setVoteId(int voteId) {
+        this.voteId = voteId;
     }
 
-    public int getCount() {
-        return count;
+    public String getResult() {
+        return result;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public Date getDate() {
@@ -43,13 +50,5 @@ public class Vote {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public Double getRate() {
-        return rate;
-    }
-
-    public void setRate(Double rate) {
-        this.rate = rate;
     }
 }

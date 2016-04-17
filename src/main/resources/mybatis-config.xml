@@ -31,9 +31,11 @@
               <typeAlias alias="Iot" type="cc.top.model.iot.entity.Iot" />
 
               <!--投票系统-->
-
-
+              <typeAlias alias="Result" type="cc.top.model.ATC.entity.Result" />
+              <typeAlias alias="Mechine" type="cc.top.model.ATC.entity.Mechine" />
               <typeAlias alias="Vote" type="cc.top.model.ATC.entity.Vote" />
+              <typeAlias alias="VoteList" type="cc.top.model.ATC.entity.VoteList" />
+              <typeAlias alias="VoteUser" type="cc.top.model.ATC.entity.VoteUser" />
 
 
        </typeAliases>
