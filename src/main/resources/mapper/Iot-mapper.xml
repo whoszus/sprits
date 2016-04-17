@@ -9,6 +9,15 @@
         insert into iotnew(name,cls,tel,clsnum,email,detail)
         values(#{name}, #{cls}, #{tel}, #{clsnum}, #{email}, #{detail})
     </insert>
+    <update id="updateIot" parameterType="Iot">
+        UPDATE iotnew
+        SET
+        tel = #{tel},
+        clsnum = #{clsnum},
+        email = #{email}
+        WHERE
+        name = #{name}
+    </update>
 
 
 </mapper>

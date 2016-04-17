@@ -1,6 +1,7 @@
 package cc.top.controller;
 
 import cc.top.fundation.BASEDAO.JsonUtils;
+import cc.top.fundation.ExportExcel;
 import cc.top.model.ATC.entity.Result;
 import cc.top.model.ATC.entity.Vote;
 import cc.top.model.ATC.entity.VoteList;
@@ -127,6 +128,20 @@ public class VoteSystemController {
         JsonUtils.writeJson(new Gson().toJson(v1),request,response);
     }
      */
+
+    @RequestMapping("export")
+    public void exportExcel(HttpServletResponse response,int voteId){
+        ExportExcel excel=new ExportExcel();
+
+        List<Result> list = voteService.getResult(voteId);
+
+        String [] Title = {"ID","设备名","满意度","投票总人数"};
+
+        excel.exportExcel(response,"vote.xls",Title,list);
+
+    }
+
+
 
 
 }

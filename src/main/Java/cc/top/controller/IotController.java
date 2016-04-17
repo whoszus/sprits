@@ -1,5 +1,6 @@
 package cc.top.controller;
 
+import cc.top.fundation.ExportExcel;
 import cc.top.model.iot.entity.Iot;
 import cc.top.model.iot.service.IotService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class IotController {
 
     @RequestMapping("submit")
     public void insertIot(Iot iot, HttpServletRequest request , HttpServletResponse response){
+
+        ExportExcel excel=new ExportExcel();
+//        List<Object> list = iotService.
 
         response.setContentType("text/html;charset=UTF-8");
         String callbackFunName =request.getParameter("callback");
