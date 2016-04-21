@@ -9,4 +9,6 @@ public interface IVoteDao {
 
     public void addVote(Vote v);
     public Vote selectByUIdAndVId(Vote v);
+
+    public void updateVote(Vote v);
 }

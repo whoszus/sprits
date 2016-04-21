@@ -2,6 +2,7 @@ package cc.top.model.ATC.dao.impl;
 
 import cc.top.fundation.BASEDAO.BaseDaoImpl;
 import cc.top.model.ATC.dao.IResultDao;
+import cc.top.model.ATC.dto.voteResult;
 import cc.top.model.ATC.entity.Result;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +27,10 @@ public class ResultDaoImpl  extends BaseDaoImpl<Result> implements IResultDao{
 
     public List<Result> getResult(int voteId) {
         return getSqlSession().selectList("result.getResult",voteId);
+    }
+
+    public List<voteResult> getResultInfo(int voteId) {
+        return getSqlSession().selectList("result.getResultInfo",voteId);
     }
 }
 

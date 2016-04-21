@@ -36,6 +36,7 @@
               <typeAlias alias="Vote" type="cc.top.model.ATC.entity.Vote" />
               <typeAlias alias="VoteList" type="cc.top.model.ATC.entity.VoteList" />
               <typeAlias alias="VoteUser" type="cc.top.model.ATC.entity.VoteUser" />
+              <typeAlias alias="VoteResult" type="cc.top.model.ATC.dto.voteResult" />
 
 
        </typeAliases>

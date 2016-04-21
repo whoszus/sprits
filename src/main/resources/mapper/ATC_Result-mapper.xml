@@ -5,46 +5,84 @@
 
 <mapper namespace="result">
     <sql id="Base_Column_List">
-        id,mechineId,rate,count,voteId,voteName
+        id,mechineId,count,voteId,excellentCount,goodCount,sosoCount,unsatisfiedCount
     </sql>
 
     <insert id="saveResult" parameterType="Result">
         INSERT INTO result
         <trim prefix="(" suffix=")" suffixOverrides=",">
             id,mechineId,
-            <if test="rate!= 0">
-                rate,
-            </if>
+
             <if test="count!= 0">
-               count,
+                count,
             </if>
-            voteId,voteName,
+            <if test="excellentCount!= 0">
+                excellentCount,
+            </if>
+            <if test="goodCount!= 0">
+                goodCount,
+            </if>
+            <if test="sosoCount != 0">
+                sosoCount,
+            </if>
+            <if test="unsatisfiedCount != 0">
+                unsatisfiedCount,
+            </if>
+            voteId,
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             #{id},#{mechineId},
-            <if test="rate!= 0">
-                #{rate},
-            </if>
             <if test="count!= 0">
                 #{count},
             </if>
-            #{voteId},#{voteName},
+            <if test="excellentCount!= 0">
+                #{excellentCount},
+            </if>
+            <if test="goodCount!= 0">
+                #{goodCount},
+            </if>
+            <if test="sosoCount != 0">
+                #{sosoCount},
+            </if>
+            <if test="unsatisfiedCount != 0">
+                #{unsatisfiedCount},
+            </if>
+            #{voteId},
         </trim>
     </insert>
 
     <update id="updateReslut" parameterType="Result">
-        UPDATE  result
+        UPDATE result
         <set>
-            rate=#{rate},count=#{count}
+
+            <if test="count!= null">
+                count = #{count},
+            </if>
+
+            <if test="excellentCount != null">
+                excellentCount= #{excellentCount},
+            </if>
+
+            <if test=" goodCount!= null">
+                goodCount = #{goodCount},
+            </if>
+
+            <if test=" sosoCount!= null">
+                sosoCount = #{sosoCount},
+            </if>
+
+            <if test="unsatisfiedCount!= null">
+                unsatisfiedCount = #{unsatisfiedCount},
+            </if>
         </set>
         <where>
             id=#{id}
         </where>
     </update>
 
-    <select id="selectByVIdAndMId" parameterType="Result"  resultType="Result">
+    <select id="selectByVIdAndMId" parameterType="Result" resultType="Result">
         SELECT
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         FROM result
         <where>
             mechineId=#{mechineId} AND
@@ -54,11 +92,19 @@
 
     <select id="getResult" parameterType="int" resultType="Result">
         SELECT
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         FROM result
         <where>
             voteId=#{voteId}
         </where>
+    </select>
+
+    <select id="getResultInfo" parameterType="int" resultType="VoteResult">
+       SELECT
+            result.id,count,excellentCount,goodCount,sosoCount,unsatisfiedCount,mechineName
+        from result,mechine
+        where result.mechineId = mechine.id
+              and result.voteId = #{voteId}
     </select>
 
 </mapper>

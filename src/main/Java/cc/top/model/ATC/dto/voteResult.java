@@ -1,33 +1,34 @@
-package cc.top.model.ATC.entity;
+package cc.top.model.ATC.dto;
 
 /**
- * Created by Lr on 2016/4/16/016.
+ * Created by Lr on 2016/4/20/020.
  */
-public class Result {
-    private int id;
-    private int mechineId;
-    private int count;
-    private int voteId;
-    private int excellentCount;
-    private int goodCount;
-    private int sosoCount;
-    private int unsatisfiedCount;
+public class voteResult {
 
+    private String mechineName;//机器名
+    private int count;//总人数
+    private int excellentCount;//非常满意人数
+    private int goodCount;//满意人数
+    private int sosoCount;//一般人数
+    private int unsatisfiedCount;//不满意人数
+    private float satisDegree;
 
-    public int getId() {
-        return id;
+    public float getSatisDegree() {
+        return satisDegree;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSatisDegree() {
+        if(count!=0){
+            satisDegree = (float)(excellentCount+goodCount)/count;
+        }
     }
 
-    public int getMechineId() {
-        return mechineId;
+    public String getMechineName() {
+        return mechineName;
     }
 
-    public void setMechineId(int mechineId) {
-        this.mechineId = mechineId;
+    public void setMechineName(String mechineName) {
+        this.mechineName = mechineName;
     }
 
     public int getCount() {
@@ -36,14 +37,6 @@ public class Result {
 
     public void setCount(int count) {
         this.count = count;
-    }
-
-    public int getVoteId() {
-        return voteId;
-    }
-
-    public void setVoteId(int voteId) {
-        this.voteId = voteId;
     }
 
     public int getExcellentCount() {

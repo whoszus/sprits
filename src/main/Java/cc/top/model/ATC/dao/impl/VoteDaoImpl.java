@@ -18,4 +18,8 @@ public class VoteDaoImpl extends BaseDaoImpl<Vote> implements IVoteDao{
     public Vote selectByUIdAndVId(Vote v) {
         return getSqlSession().selectOne("vote.selectByUIdAndVId",v);
     }
+
+    public void updateVote(Vote v) {
+        getSqlSession().update("vote.updateVote",v);
+    }
 }

@@ -2,10 +2,8 @@ package cc.top.controller;
 
 import cc.top.fundation.BASEDAO.JsonUtils;
 import cc.top.fundation.ExportExcel;
-import cc.top.model.ATC.entity.Result;
-import cc.top.model.ATC.entity.Vote;
-import cc.top.model.ATC.entity.VoteList;
-import cc.top.model.ATC.entity.VoteUser;
+import cc.top.model.ATC.dto.voteResult;
+import cc.top.model.ATC.entity.*;
 import cc.top.model.ATC.service.IVoteService;
 import cc.top.model.ATC.service.IVoteUserService;
 import com.google.gson.Gson;
@@ -59,7 +57,7 @@ public class VoteSystemController {
         JsonUtils.writeJson(json,request,response);
     }
 
-    //http://localhost:8080/atc/userVote?voteId=2&result=10101&userId=2
+    //http://localhost:8080/atc/userVote?voteId=2&result=100010001&userId=2
     @RequestMapping("userVote")
     @ResponseBody
     public void addVote(Vote v,HttpServletRequest request,HttpServletResponse response){
@@ -72,7 +70,9 @@ public class VoteSystemController {
             JsonUtils.writeJson(json, request, response);
         }
         else{
-            String json = "{\"message\":\"每个用户只能参加一次！\"}";
+            v.setDate(new Date());
+            voteService.updateVote(v1,v);
+            String json = "{\"message\":\"此次投票中已经投过的选项将不再写入数据库！\"}";
             JsonUtils.writeJson(json, request, response);
         }
     }
@@ -81,7 +81,8 @@ public class VoteSystemController {
     @RequestMapping("getResults")
     @ResponseBody
     public void getResults(int voteId,HttpServletRequest request,HttpServletResponse response){
-        List<Result> results = voteService.getResult(voteId);
+       // List<Result> results = voteService.getResult(voteId);
+        List<voteResult> results = voteService.getResultInfo(voteId);
         JsonUtils.writeJson(new Gson().toJson(results), request, response);
     }
 
@@ -119,30 +120,52 @@ public class VoteSystemController {
     }
 
 
-
     //http://localhost:8080/atc/selectByUIdAndVId?userId=2&voteId=2
-    @RequestMapping("selectByUIdAndVId")
-    @ResponseBody
-    public void  selectByUIdAndVId(Vote v,HttpServletRequest request,HttpServletResponse response){
-        Vote v1 = voteService.selectByUIdAndVId(v);
-        JsonUtils.writeJson(new Gson().toJson(v1),request,response);
-    }
+     @RequestMapping("selectByUIdAndVId")
+     @ResponseBody
+     public void  selectByUIdAndVId(Vote v,HttpServletRequest request,HttpServletResponse response){
+     Vote v1 = voteService.selectByUIdAndVId(v);
+     JsonUtils.writeJson(new Gson().toJson(v1),request,response);
+     }
+
+     //http://localhost:8080/atc/updateVote?userId=2&voteId=2&result=131111111
+     @RequestMapping("updateVote")
+     public void updateVote( Vote v,HttpServletRequest request,HttpServletResponse response){
+
+     v.setDate(new Date());
+     voteService.updateVote(null,v);
+     JsonUtils.writeJson(new Gson().toJson(v),request,response);
+     }
+
+     //http://localhost:8080/atc/getResultInfo?voteId=2
+     @RequestMapping("getResultInfo")
+     @ResponseBody
+     public void getResultInfo(int voteId,HttpServletRequest request,HttpServletResponse response){
+     List<voteResult> voteResults = voteService.getResultInfo(voteId);
+     JsonUtils.writeJson(new Gson().toJson(voteResults), request, response);
+     }
      */
 
+   //http://localhost:8080/atc/export?voteId=2
     @RequestMapping("export")
     public void exportExcel(HttpServletResponse response,int voteId){
         ExportExcel excel=new ExportExcel();
 
-        List<Result> list = voteService.getResult(voteId);
+        List<voteResult> list = voteService.getResultInfo(voteId);
 
-        String [] Title = {"ID","设备名","满意度","投票总人数"};
+        String [] Title = {"设备名","投票总人数","非常满意人数","满意人数","一般满意人数","不满意人数","满意度"};
 
-        excel.exportExcel(response,"vote.xls",Title,list);
+        VoteList voteList =  voteService.findByVoteId(voteId);
+        String name=voteList.getVoteName()+"投票结果.xls";
+        excel.exportExcel(response,name ,Title,list);
 
     }
-
-
-
-
+    //http://localhost:8080/atc/getMechines
+    @RequestMapping("getMechines")
+    @ResponseBody
+    public void  getMechines(HttpServletRequest request,HttpServletResponse response){
+        List<Mechine>  mechines = voteService.getMechines();
+        JsonUtils.writeJson(new Gson().toJson(mechines), request, response);
+    }
 }
 

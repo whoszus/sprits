@@ -24,6 +24,17 @@
         </trim>
     </insert>
 
+    <update id="updateVote" parameterType="Vote" >
+        update vote
+        <set>
+            result=#{result},
+            date=#{date}
+        </set>
+        <where>
+             voteId=#{voteId} AND userId=#{userId}
+        </where>
+    </update>
+
     <select id="selectByUIdAndVId" resultType="Vote" parameterType="Vote">
         SELECT
         <include refid="Base_Column_List" />

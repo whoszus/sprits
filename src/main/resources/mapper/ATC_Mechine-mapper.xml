@@ -8,5 +8,11 @@
         id,mechineName
     </sql>
 
+    <select id="getAll" resultType="Mechine">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mechine
+    </select>
+
 
 </mapper>

@@ -1,5 +1,6 @@
 package cc.top.model.ATC.dao;
 
+import cc.top.model.ATC.dto.voteResult;
 import cc.top.model.ATC.entity.Result;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface IResultDao {
     public void updateReslut(Result r);
     public Result selectByVIdAndMId(Result r);
     public List<Result> getResult(int voteId);
+    public List<voteResult> getResultInfo(int voteId);
 }
