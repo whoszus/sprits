@@ -220,4 +220,12 @@ public class VoteServiceImpl implements IVoteService {
         return voteListDao.selectById(voteId);
     }
 
+    public boolean IsFindVoteListByName(String name) {
+        VoteList vList = voteListDao.findByName(name);
+        if(vList!=null){
+            return true;
+        }
+        return false;
+    }
+
 }

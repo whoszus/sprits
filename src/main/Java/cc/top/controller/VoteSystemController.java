@@ -90,61 +90,21 @@ public class VoteSystemController {
     @RequestMapping("creatVote")
     @ResponseBody
     public void addVoteList(VoteList voteList,HttpServletRequest request,HttpServletResponse response){
-        voteService.addVoteList(voteList);
-        String json = "{\"success\":\"success\"}";
+        if(voteList.getVoteName()==null){
+            return;
+        }
+
+        String json;
+       if(voteService.IsFindVoteListByName(voteList.getVoteName())){
+            json = "{\"success\":\"existed\"}";
+       }else{
+           voteService.addVoteList(voteList);
+           json = "{\"success\":\"success\"}";
+       }
+
         JsonUtils.writeJson(json, request, response);
     }
 
-    /**
-    //http://localhost:8080/atc/addResult?mechineId=1&rate=1&count=2&voteId=1&voteName=123
-    @RequestMapping("addResult")
-    @ResponseBody
-    public void addResult(Result r,HttpServletRequest request,HttpServletResponse response){
-       voteService.addResult(r);
-        JsonUtils.writeJson(new Gson().toJson(r),request,response);
-    }
-
-    //http://localhost:8080/atc/updateResult?rate=7&count=4
-    @RequestMapping("updateResult")
-    @ResponseBody
-    public void updateResult(Result r){
-        voteService.updateReslut(r);
-    }
-
-    //http://localhost:8080/atc/selectByVIdAndMId?mechineId=1&voteId=1
-    @RequestMapping("selectByVIdAndMId")
-    @ResponseBody
-    public void selectByVIdAndMId(Result r,HttpServletRequest request,HttpServletResponse response){
-        Result r1 = voteService.selectByVIdAndMId(r);
-        JsonUtils.writeJson(new Gson().toJson(r1),request,response);
-    }
-
-
-    //http://localhost:8080/atc/selectByUIdAndVId?userId=2&voteId=2
-     @RequestMapping("selectByUIdAndVId")
-     @ResponseBody
-     public void  selectByUIdAndVId(Vote v,HttpServletRequest request,HttpServletResponse response){
-     Vote v1 = voteService.selectByUIdAndVId(v);
-     JsonUtils.writeJson(new Gson().toJson(v1),request,response);
-     }
-
-     //http://localhost:8080/atc/updateVote?userId=2&voteId=2&result=131111111
-     @RequestMapping("updateVote")
-     public void updateVote( Vote v,HttpServletRequest request,HttpServletResponse response){
-
-     v.setDate(new Date());
-     voteService.updateVote(null,v);
-     JsonUtils.writeJson(new Gson().toJson(v),request,response);
-     }
-
-     //http://localhost:8080/atc/getResultInfo?voteId=2
-     @RequestMapping("getResultInfo")
-     @ResponseBody
-     public void getResultInfo(int voteId,HttpServletRequest request,HttpServletResponse response){
-     List<voteResult> voteResults = voteService.getResultInfo(voteId);
-     JsonUtils.writeJson(new Gson().toJson(voteResults), request, response);
-     }
-     */
 
    //http://localhost:8080/atc/export?voteId=2
     @RequestMapping("export")

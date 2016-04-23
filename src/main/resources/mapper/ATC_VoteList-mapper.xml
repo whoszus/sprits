@@ -28,4 +28,13 @@
         VALUES (#{startTime},#{endTime},#{voteName})
     </insert>
 
+    <select id="findByName" parameterType="String" resultType="VoteList">
+        SELECT
+        <include refid="Base_Column_List" />
+        from voteList
+        <where>
+            voteName=#{voteName}
+        </where>
+    </select>
+
 </mapper>

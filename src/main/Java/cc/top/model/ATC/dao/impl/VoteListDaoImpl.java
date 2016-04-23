@@ -24,4 +24,15 @@ public class VoteListDaoImpl extends BaseDaoImpl<VoteList> implements IVoteListD
     public void addVoteList(VoteList voteList) {
         getSqlSession().insert("voteList.creatVote",voteList);
     }
+
+    /**
+     * 通过名称查找VoteList
+     * @param name
+     * @return
+     */
+    public VoteList findByName(String name) {
+        return  getSqlSession().selectOne("voteList.findByName",name);
+    }
+
+
 }

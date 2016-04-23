@@ -11,3 +11,5 @@ public interface IVoteUserDao {
     public VoteUser selectbyAP(VoteUser user);
 
 }
+
+
