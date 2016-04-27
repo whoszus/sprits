@@ -15,7 +15,7 @@ import java.util.List;
 public class ResultDaoImpl  extends BaseDaoImpl<Result> implements IResultDao{
 
     public void addResult(Result r) {
-        getSqlSession().insert("result.saveResult",r);
+        getSqlSession().selectOne("result.saveResult",r) ;
     }
     public void updateReslut(Result r){
        getSqlSession().update("result.updateReslut",r);

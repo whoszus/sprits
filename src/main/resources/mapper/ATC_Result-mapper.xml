@@ -101,7 +101,7 @@
 
     <select id="getResultInfo" parameterType="int" resultType="VoteResult">
        SELECT
-            result.id,count,excellentCount,goodCount,sosoCount,unsatisfiedCount,mechineName
+            count,excellentCount,goodCount,sosoCount,unsatisfiedCount,mechineName
         from result,mechine
         where result.mechineId = mechine.id
               and result.voteId = #{voteId}

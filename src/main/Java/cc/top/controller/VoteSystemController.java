@@ -42,9 +42,19 @@ public class VoteSystemController {
     @RequestMapping("regist")
     @ResponseBody
     public void regist(VoteUser user,HttpServletRequest request,HttpServletResponse response){
-        userService.addUser(user);
-        VoteUser u =userService.selectbyAP(user);
-        JsonUtils.writeJson(new Gson().toJson(u),request,response);
+        VoteUser u = null;
+        String json =null;
+        try {
+            userService.addUser(user);
+            u =userService.selectbyAP(user);
+            json = new Gson().toJson(u);
+        }catch (Exception e ){
+            json = "{\"success\":\"existed\"}";
+        }finally {
+            JsonUtils.writeJson(json,request,response);
+        }
+
+
     }
 
     //http://localhost:8080/atc/voteList
@@ -57,13 +67,13 @@ public class VoteSystemController {
         JsonUtils.writeJson(json,request,response);
     }
 
-    //http://localhost:8080/atc/userVote?voteId=2&result=100010001&userId=2
+    //http://localhost:8080/atc/userVote?voteId=2&result=10000000000000000000010000003&userId=2
     @RequestMapping("userVote")
     @ResponseBody
     public void addVote(Vote v,HttpServletRequest request,HttpServletResponse response){
         Vote v1 = voteService.selectByUIdAndVId(v);
         if(v1==null) {
-            v.setDate(new Date());
+                v.setDate(new Date());
             voteService.addVote(v);
             voteService.saveResultByUserVote(v);
             String json = "{\"success\":\"success\"}";
@@ -82,6 +92,7 @@ public class VoteSystemController {
     @ResponseBody
     public void getResults(int voteId,HttpServletRequest request,HttpServletResponse response){
        // List<Result> results = voteService.getResult(voteId);
+        System.out.println(voteId);
         List<voteResult> results = voteService.getResultInfo(voteId);
         JsonUtils.writeJson(new Gson().toJson(results), request, response);
     }
@@ -109,11 +120,12 @@ public class VoteSystemController {
    //http://localhost:8080/atc/export?voteId=2
     @RequestMapping("export")
     public void exportExcel(HttpServletResponse response,int voteId){
-        ExportExcel excel=new ExportExcel();
+        System.out.println(voteId);
+        ExportExcel excel = new ExportExcel();
 
         List<voteResult> list = voteService.getResultInfo(voteId);
 
-        String [] Title = {"设备名","投票总人数","非常满意人数","满意人数","一般满意人数","不满意人数","满意度"};
+        String [] Title = {"设备名","投票总人数","非常满意人数","比较满意人数","一般满意人数","不满意人数","满意度"};
 
         VoteList voteList =  voteService.findByVoteId(voteId);
         String name=voteList.getVoteName()+"投票结果.xls";

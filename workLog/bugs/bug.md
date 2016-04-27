@@ -28,4 +28,4 @@
     7.disparcherServlet 拦截*.html  的时候 出现406 "The resource identified by this request is only capable of generating responses with characteristics not acceptable according to the request "accept" headers.
 
 "
-
+    8.数据库不能联表查询：更改了数据库的排序规则：utf8_bin,然后就能实现联表查询了

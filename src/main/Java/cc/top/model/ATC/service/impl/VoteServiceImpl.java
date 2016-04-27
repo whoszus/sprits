@@ -102,16 +102,18 @@ public class VoteServiceImpl implements IVoteService {
             if (r == null) {//等于空说明是第一个投票，应该插入数据库
                 int satisDegree = Integer.parseInt(String.valueOf(resultStr.charAt(i - 1)));
 
-                if (satisDegree == 0) {
-                    continue;
-                }
 
                 Result r1 = new Result();
                 r1 = judge(satisDegree, r1);
                 r1.setVoteId(voteId);
                 r1.setMechineId(i);//机器id
 
-                r1.setCount(1); //人数变为1
+                if (satisDegree == 0) {
+                    r1.setCount(0);
+                } else {
+                    r1.setCount(1); //人数变为1
+                }
+
 
                 resultDao.addResult(r1);
             } else {//说明不是第一次投票，只需要更新相应的记录
@@ -125,7 +127,8 @@ public class VoteServiceImpl implements IVoteService {
 
 
                 r = judge(satisDegree, r);
-                r.setCount(r.getCount() + 1);
+                int count = r.getCount() + 1;
+                r.setCount(count);
                 resultDao.updateReslut(r);
             }
 
@@ -167,36 +170,17 @@ public class VoteServiceImpl implements IVoteService {
 
                 Result r = resultDao.selectByVIdAndMId(t);
 
-                if (r == null) {//等于空说明是第一个投票，应该插入数据库
-                    int satisDegree = Integer.parseInt(String.valueOf(vResult.charAt(i - 1)));
-
-                    if (satisDegree == 0) {
-                        continue;
-                    }
-
-                    Result r1 = new Result();
-
-                    r1 = judge(satisDegree, r1);
-                    r1.setVoteId(v.getVoteId());
-
-                    r1.setMechineId(i);//机器id
-                    r1.setCount(1); //人数变为1
-
-                    resultDao.addResult(r1);
-                } else {//说明不是第一次投票，只需要更新相应的记录
                     //得到用户的投票
                     int satisDegree = Integer.parseInt(String.valueOf(vResult.charAt(i - 1)));
 
                     if (satisDegree == 0) {
                         continue;
                     }
+                    int count = r.getCount() + 1;
 
-                    r.setCount(r.getCount() + 1);
-
-                    System.out.println(r.getCount());
+                    r.setCount(count);
                     r = judge(satisDegree, r);
                     resultDao.updateReslut(r);
-                }
             }
         }
         v.setResult(temp.toString());
@@ -209,8 +193,8 @@ public class VoteServiceImpl implements IVoteService {
     }
 
     public List<voteResult> getResultInfo(int voteId) {
-        List<voteResult> voteResults =  resultDao.getResultInfo(voteId);
-        for(int i=0;i<voteResults.size();i++){
+        List<voteResult> voteResults = resultDao.getResultInfo(voteId);
+        for (int i = 0; i < voteResults.size(); i++) {
             voteResults.get(i).setSatisDegree();
         }
         return voteResults;
@@ -222,7 +206,7 @@ public class VoteServiceImpl implements IVoteService {
 
     public boolean IsFindVoteListByName(String name) {
         VoteList vList = voteListDao.findByName(name);
-        if(vList!=null){
+        if (vList != null) {
             return true;
         }
         return false;
