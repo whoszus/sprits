@@ -12,6 +12,7 @@
          SELECT
          <include refid="Base_Column_List" />
          from voteList
+         ORDER  BY  voteId DESC
      </select>
 
     <select id="selectById" parameterType="int" resultType="VoteList">
